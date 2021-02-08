@@ -5,15 +5,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 import csv
 
-
 load_dotenv()
 
 csv_delimit = ';'
-connection_url = ""
-login_id = 'login'
-password_id = 'mdp'
-submit_button_id = 'sbt_login'
-form_url = ""
+connection_url = ""  # url permettant d'acc. a la page de co.
+login_id = 'login'  # id html du champ pour login/username
+password_id = 'mdp'  # id html du champ pour mot de passe
+submit_button_id = 'sbt_login'  # id html du btn pour soumettre le form. a remplir
+form_url = ""  # url vers le formulaire a remplir une fois co
+csv_url = ""  # chemin vers le fichier csv
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
@@ -29,7 +29,7 @@ def connect():
 
 
 def csv_to_list():
-    with open('1Patient.txt', encoding='utf-8') as csv_file:
+    with open(csv_url, encoding='utf-8') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=csv_delimit)
         line_count = 0
         result = []
